@@ -1,0 +1,80 @@
+---
+/**
+ * Pillars.astro
+ *
+ * Section displaying the three core pillars of Hemifuture.
+ * Refactored to use shared CardGrid component.
+ */
+
+import CardGrid from './CardGrid.astro';
+import PillarCard from './PillarCard.astro';
+
+interface Pillar {
+  icon: string;
+  title: string;
+  subtitle: string;
+  description: string;
+}
+
+interface Props {
+  label?: string;
+  title?: string;
+  pillars?: Pillar[];
+}
+
+const defaultPillars: Pillar[] = [
+  {
+    icon: '✧',
+    title: 'Experience',
+    subtitle: '体验',
+    description: '沉浸于精心构建的世界观之中。每一个场景、每一段对话、每一次相遇，都是为了让你忘却现实的边界，真正「活」在另一个世界里。'
+  },
+  {
+    icon: '◈',
+    title: 'Feel',
+    subtitle: '感受',
+    description: '情感是连接虚拟与真实的桥梁。我们追求的不是单纯的视觉刺激，而是能够触动心灵深处的共鸣——喜悦、悲伤、希望与成长。'
+  },
+  {
+    icon: '❖',
+    title: 'Create',
+    subtitle: '创造',
+    description: '最终，我们希望每个人都能成为世界的共同创作者。你的故事、你的角色、你的梦想，都将成为这个世界的一部分。'
+  }
+];
+
+const {
+  label = 'Core Pillars',
+  title = '三位一体的哲学',
+  pillars = defaultPillars
+} = Astro.props;
+---
+
+<section class="pillars">
+  <div class="container container-3xl">
+    <CardGrid columns={3}>
+      <div slot="header">
+        <span class="section-label">{label}</span>
+        <h2 class="section-title">{title}</h2>
+      </div>
+
+      {pillars.map((pillar, index) => (
+        <div style={'--stagger-delay: ' + (index * 150) + 'ms'}>
+          <PillarCard {...pillar} />
+        </div>
+      ))}
+    </CardGrid>
+  </div>
+</section>
+
+<style>
+  .pillars {
+    padding: var(--space-section-lg) 0;
+    position: relative;
+  }
+</style>
+
+<script>
+  import { observeScrollAnimations } from '../lib/scroll-animation';
+  observeScrollAnimations('.pillar-card');
+</script>

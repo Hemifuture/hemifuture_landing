@@ -1,0 +1,90 @@
+---
+/**
+ * PillarCard.astro
+ * 
+ * Card component for displaying core pillars/values.
+ * Refactored to use shared animation classes.
+ */
+
+interface Props {
+  icon: string;
+  title: string;
+  subtitle: string;
+  description: string;
+}
+
+const { icon, title, subtitle, description } = Astro.props;
+---
+
+<article class="pillar-card fade-in-up">
+  <span class="pillar-icon" aria-hidden="true">{icon}</span>
+  <h3 class="pillar-title">{title}</h3>
+  <span class="pillar-subtitle">{subtitle}</span>
+  <p class="pillar-description">{description}</p>
+</article>
+
+<style>
+  .pillar-card {
+    background: var(--gradient-card);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-12) var(--space-10);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .pillar-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-aurora);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--duration-slower) var(--ease-out);
+  }
+
+  .pillar-card:hover::before {
+    transform: scaleX(1);
+  }
+
+  .pillar-card:hover {
+    border-color: var(--color-border-emphasis);
+    box-shadow: var(--glow-card-hover);
+  }
+
+  .pillar-card.visible:hover {
+    transform: translateY(-10px);
+  }
+
+  .pillar-icon {
+    font-size: var(--text-display-sm);
+    display: block;
+    margin-bottom: var(--space-8);
+  }
+
+  .pillar-title {
+    font-family: var(--font-display);
+    font-size: var(--text-heading-lg);
+    font-weight: var(--font-weight-regular);
+    margin-bottom: var(--space-2);
+  }
+
+  .pillar-subtitle {
+    font-family: var(--font-cjk);
+    font-size: var(--text-body-sm);
+    color: var(--color-aurora-400);
+    display: block;
+    margin-bottom: var(--space-6);
+  }
+
+  .pillar-description {
+    font-size: var(--text-body-md);
+    font-weight: var(--font-weight-extralight);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+</style>

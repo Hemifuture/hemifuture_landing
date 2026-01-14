@@ -1,0 +1,76 @@
+---
+/**
+ * Projects.astro
+ *
+ * Section showcasing active projects.
+ * Refactored to use shared CardGrid component.
+ */
+
+import CardGrid from './CardGrid.astro';
+import ProjectCard from './ProjectCard.astro';
+
+interface Project {
+  status?: string;
+  name: string;
+  tagline: string;
+  description: string;
+  href?: string;
+}
+
+interface Props {
+  label?: string;
+  title?: string;
+  projects?: Project[];
+}
+
+const defaultProjects: Project[] = [
+  {
+    name: 'Sekai',
+    tagline: '世界构建引擎',
+    description: '一个用于构建和管理虚拟世界的核心框架。支持复杂的世界观设定、角色关系网络、以及动态事件系统。',
+    href: '#sekai'
+  },
+  {
+    name: '树洞',
+    tagline: '匿名社区平台',
+    description: '一个安全、温暖的匿名交流空间。在这里，你可以分享内心深处的想法，寻找理解与共鸣，不必担心身份与标签。',
+    href: '#treehole'
+  }
+];
+
+const {
+  label = 'Open Source',
+  title = '我们正在构建的',
+  projects = defaultProjects
+} = Astro.props;
+---
+
+<section class="projects">
+  <div class="container container-2xl">
+    <CardGrid columns={2}>
+      <div slot="header">
+        <span class="section-label">{label}</span>
+        <h2 class="section-title">{title}</h2>
+      </div>
+
+      {projects.map((project, index) => (
+        <div style={'--stagger-delay: ' + (index * 150) + 'ms'}>
+          <ProjectCard {...project} />
+        </div>
+      ))}
+    </CardGrid>
+  </div>
+</section>
+
+<style>
+  .projects {
+    padding: var(--space-section-lg) 0;
+    background: var(--color-surface-subtle);
+    position: relative;
+  }
+</style>
+
+<script>
+  import { observeScrollAnimations } from '../lib/scroll-animation';
+  observeScrollAnimations('.project-card');
+</script>

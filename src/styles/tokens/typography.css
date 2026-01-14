@@ -1,0 +1,116 @@
+/**
+ * Hemifuture Design System - Typography Tokens
+ * 
+ * Typography Philosophy:
+ * - Cormorant Garamond for elegant display text (fantasy, refined)
+ * - Outfit for clean body text (modern, readable)
+ * - Noto Serif SC for Chinese text (cultural bridge)
+ */
+
+:root {
+  /* ========================================
+     FONT FAMILIES
+     ======================================== */
+  
+  --font-display: 'Cormorant Garamond', 'Noto Serif SC', Georgia, serif;
+  --font-body: 'Outfit', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-cjk: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+
+  /* ========================================
+     FONT SIZES - Fluid scale
+     ======================================== */
+  
+  /* Display sizes - For hero text and major headings */
+  --text-display-2xl: clamp(3.5rem, 10vw, 7rem);
+  --text-display-xl: clamp(3rem, 8vw, 5rem);
+  --text-display-lg: clamp(2.5rem, 6vw, 4rem);
+  --text-display-md: clamp(2rem, 5vw, 3.5rem);
+  --text-display-sm: clamp(1.75rem, 4vw, 3rem);
+  
+  /* Heading sizes - For section titles */
+  --text-heading-xl: clamp(1.75rem, 3.5vw, 2.5rem);
+  --text-heading-lg: clamp(1.5rem, 3vw, 2rem);
+  --text-heading-md: clamp(1.25rem, 2.5vw, 1.75rem);
+  --text-heading-sm: clamp(1.125rem, 2vw, 1.5rem);
+  
+  /* Body sizes - For paragraphs and UI text */
+  --text-body-xl: clamp(1.125rem, 1.8vw, 1.25rem);
+  --text-body-lg: clamp(1rem, 1.5vw, 1.125rem);
+  --text-body-md: 1rem;
+  --text-body-sm: 0.9rem;
+  --text-body-xs: 0.85rem;
+  
+  /* Caption sizes - For labels and meta text */
+  --text-caption-lg: 0.8rem;
+  --text-caption-md: 0.75rem;
+  --text-caption-sm: 0.7rem;
+  --text-caption-xs: 0.65rem;
+
+  /* ========================================
+     FONT WEIGHTS
+     ======================================== */
+  
+  --font-weight-thin: 100;
+  --font-weight-extralight: 200;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* ========================================
+     LINE HEIGHTS
+     ======================================== */
+  
+  --line-height-none: 1;
+  --line-height-tight: 1.2;
+  --line-height-snug: 1.35;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.7;
+  --line-height-loose: 1.9;
+
+  /* ========================================
+     LETTER SPACING
+     ======================================== */
+  
+  --tracking-tighter: -0.02em;
+  --tracking-tight: -0.01em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.05em;
+  --tracking-wider: 0.1em;
+  --tracking-widest: 0.15em;
+  --tracking-ultra: 0.3em;
+  --tracking-hero: 0.4em;
+  --tracking-mega: 0.5em;
+
+  /* ========================================
+     COMPOSITE TEXT STYLES
+     ======================================== */
+  
+  /* Hero/Logo style */
+  --text-style-logo-size: var(--text-display-2xl);
+  --text-style-logo-weight: var(--font-weight-light);
+  --text-style-logo-tracking: var(--tracking-ultra);
+  --text-style-logo-transform: uppercase;
+  
+  /* Section label style */
+  --text-style-label-size: var(--text-caption-md);
+  --text-style-label-weight: var(--font-weight-regular);
+  --text-style-label-tracking: var(--tracking-hero);
+  --text-style-label-transform: uppercase;
+  
+  /* Tagline style */
+  --text-style-tagline-size: var(--text-heading-xl);
+  --text-style-tagline-weight: var(--font-weight-regular);
+  --text-style-tagline-style: italic;
+  
+  /* Body prose style */
+  --text-style-prose-size: var(--text-body-lg);
+  --text-style-prose-weight: var(--font-weight-extralight);
+  --text-style-prose-line-height: var(--line-height-loose);
+  
+  /* CJK subtitle style */
+  --text-style-cjk-subtitle-size: var(--text-body-sm);
+  --text-style-cjk-subtitle-tracking: var(--tracking-mega);
+}

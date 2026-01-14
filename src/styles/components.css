@@ -1,0 +1,405 @@
+/**
+ * Components Styles
+ *
+ * Reusable component-level styles and animations.
+ * Import this after tokens and base styles.
+ */
+
+/* ========================================
+   SCROLL ANIMATION CLASSES
+   ======================================== */
+
+/**
+ * Fade in from bottom
+ * Used for: Cards, sections entering from below
+ */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: var(--transition-page);
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/**
+ * Fade in from left
+ * Used for: Left-side content in split layouts
+ */
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: var(--transition-page);
+}
+
+.fade-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/**
+ * Fade in from right
+ * Used for: Right-side content in split layouts
+ */
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: var(--transition-page);
+}
+
+.fade-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/**
+ * Scale in
+ * Used for: Project cards, modals
+ */
+.scale-in {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: var(--transition-page);
+}
+
+.scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/**
+ * Fade in (no movement)
+ * Used for: Simple fade effects
+ */
+.fade-in {
+  opacity: 0;
+  transition: opacity var(--duration-slower) var(--ease-out);
+}
+
+.fade-in.visible {
+  opacity: 1;
+}
+
+/* ========================================
+   CARD COMPONENTS
+   ======================================== */
+
+/**
+ * Base card styling
+ * Shared foundation for all card types
+ */
+.card-base {
+  background: var(--color-surface-glass);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-10);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.card-base:hover {
+  border-color: var(--color-border-emphasis);
+  box-shadow: var(--glow-card-hover);
+  transform: translateY(-4px);
+}
+
+/**
+ * Card with top accent line
+ * Used for: Pillar cards
+ */
+.card-accent-top::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--gradient-fade-horizontal);
+  opacity: 0.3;
+  transition: var(--transition-normal);
+}
+
+.card-accent-top:hover::before {
+  opacity: 1;
+  background: var(--gradient-aurora);
+}
+
+/* ========================================
+   BUTTON COMPONENTS
+   ======================================== */
+
+/**
+ * Primary button with gradient background
+ */
+.button-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-5) var(--space-8);
+  border: 2px solid var(--color-border-emphasis);
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.button-primary::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-aurora);
+  opacity: 0;
+  transition: var(--transition-smooth);
+  z-index: -1;
+}
+
+.button-primary:hover {
+  border-color: var(--color-aurora-400);
+  color: var(--color-text-on-emphasis);
+  transform: translateY(-2px);
+  box-shadow: var(--glow-aurora);
+}
+
+.button-primary:hover::before {
+  opacity: 1;
+}
+
+.button-primary:active {
+  transform: translateY(0);
+}
+
+/**
+ * Text button with arrow
+ */
+.button-text {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: var(--text-sm);
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  transition: var(--transition-normal);
+}
+
+.button-text:hover {
+  border-color: var(--color-aurora-400);
+  color: var(--color-aurora-400);
+  gap: var(--space-3);
+}
+
+.button-text svg {
+  width: 16px;
+  height: 16px;
+  transition: var(--transition-normal);
+}
+
+.button-text:hover svg {
+  transform: translateX(4px);
+}
+
+/* ========================================
+   GRID LAYOUTS
+   ======================================== */
+
+/**
+ * Stagger delay support for grid items
+ * Use with inline style: style="--stagger-delay: 150ms"
+ */
+.grid-stagger > * {
+  --stagger-delay: 0ms;
+}
+
+.grid-stagger > * > * {
+  transition-delay: var(--stagger-delay);
+}
+
+/**
+ * Responsive card grid
+ */
+.card-grid {
+  display: grid;
+  gap: var(--space-8);
+  width: 100%;
+}
+
+.card-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+@media (max-width: 1024px) {
+  .card-grid-3,
+  .card-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .card-grid-2,
+  .card-grid-3,
+  .card-grid-4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========================================
+   BADGE COMPONENTS
+   ======================================== */
+
+/**
+ * Status badge
+ * Used for: Project status, labels
+ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-full);
+  font-size: var(--text-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.badge-default {
+  background: var(--color-surface-elevated);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.badge-accent {
+  background: linear-gradient(135deg,
+    var(--color-aurora-400) 0%,
+    var(--color-aurora-purple-400) 100%
+  );
+  color: var(--color-text-on-emphasis);
+  border: none;
+}
+
+.badge-success {
+  background: var(--color-emerald-400);
+  color: var(--color-void-900);
+  border: none;
+}
+
+.badge-warning {
+  background: var(--color-gold-400);
+  color: var(--color-void-900);
+  border: none;
+}
+
+/* ========================================
+   ICON COMPONENTS
+   ======================================== */
+
+/**
+ * Icon wrapper with consistent sizing
+ */
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size-icon, 24px);
+  height: var(--size-icon, 24px);
+  color: currentColor;
+}
+
+.icon-sm {
+  --size-icon: 16px;
+}
+
+.icon-md {
+  --size-icon: 24px;
+}
+
+.icon-lg {
+  --size-icon: 32px;
+}
+
+.icon-xl {
+  --size-icon: 48px;
+}
+
+/**
+ * Icon with gradient fill
+ */
+.icon-gradient {
+  background: var(--gradient-aurora);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========================================
+   DIVIDER COMPONENTS
+   ======================================== */
+
+/**
+ * Horizontal divider
+ */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: var(--color-border-subtle);
+  margin: var(--space-8) 0;
+}
+
+.divider-gradient {
+  background: var(--gradient-fade-horizontal);
+}
+
+/* ========================================
+   UTILITY ANIMATIONS
+   ======================================== */
+
+/**
+ * Hover lift effect
+ */
+.hover-lift {
+  transition: transform var(--duration-normal) var(--ease-out);
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+}
+
+/**
+ * Pulse effect for indicators
+ */
+.pulse {
+  animation: pulse var(--duration-ambient-fast) var(--ease-in-out) infinite;
+}
+
+/**
+ * Glow on hover
+ */
+.hover-glow {
+  transition: box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.hover-glow:hover {
+  box-shadow: var(--glow-aurora);
+}

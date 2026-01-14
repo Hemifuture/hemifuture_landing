@@ -1,0 +1,190 @@
+---
+/**
+ * Hero.astro
+ * 
+ * Main hero section with logo, tagline, and description.
+ */
+
+import ScrollIndicator from './ScrollIndicator.astro';
+
+interface Props {
+  subtitle?: string;
+  description?: string;
+}
+
+const {
+  subtitle = '通往彼岸的半程未来',
+  description = '一个致力于构建第二人生的创作者集体。我们融合日式美学与西方幻想，编织属于每个人的异世界。'
+} = Astro.props;
+
+const taglineWords = [
+  { en: 'Experience', cn: '体验' },
+  { en: 'Feel', cn: '感受' },
+  { en: 'Create', cn: '创造' }
+];
+---
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="logo-container">
+      <h1 class="logo">Hemifuture</h1>
+    </div>
+    
+    <p class="subtitle">{subtitle}</p>
+    
+    <div class="tagline">
+      {taglineWords.map((word, index) => (
+        <>
+          <span class="tagline-word" data-cn={word.cn}>{word.en}</span>
+          {index < taglineWords.length - 1 && (
+            <span class="tagline-separator" aria-hidden="true"></span>
+          )}
+        </>
+      ))}
+    </div>
+    
+    <p class="hero-description">{description}</p>
+  </div>
+  
+  <ScrollIndicator />
+</section>
+
+<style>
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: var(--space-8);
+    position: relative;
+  }
+
+  .hero-content {
+    max-width: var(--container-lg);
+  }
+
+  /* Logo */
+  .logo-container {
+    margin-bottom: var(--space-12);
+    opacity: 0;
+    animation: fadeInUp var(--duration-slowest) var(--ease-spring) var(--delay-300) forwards;
+  }
+
+  .logo {
+    font-family: var(--font-display);
+    font-size: var(--text-style-logo-size);
+    font-weight: var(--text-style-logo-weight);
+    letter-spacing: var(--text-style-logo-tracking);
+    text-transform: var(--text-style-logo-transform);
+    background: var(--gradient-text);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    display: inline-block;
+  }
+
+  .logo::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: var(--gradient-fade-horizontal);
+  }
+
+  /* Subtitle */
+  .subtitle {
+    font-family: var(--font-cjk);
+    font-size: var(--text-style-cjk-subtitle-size);
+    font-weight: var(--font-weight-light);
+    letter-spacing: var(--text-style-cjk-subtitle-tracking);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-16);
+    opacity: 0;
+    animation: fadeInUp var(--duration-slowest) var(--ease-spring) var(--delay-600) forwards;
+  }
+
+  /* Tagline */
+  .tagline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--space-8);
+    flex-wrap: wrap;
+    margin-bottom: var(--space-16);
+    opacity: 0;
+    animation: fadeInUp var(--duration-slowest) var(--ease-spring) var(--delay-900) forwards;
+  }
+
+  .tagline-word {
+    font-family: var(--font-display);
+    font-size: var(--text-style-tagline-size);
+    font-weight: var(--text-style-tagline-weight);
+    font-style: var(--text-style-tagline-style);
+    color: var(--color-text-primary);
+    position: relative;
+    transition: var(--transition-smooth);
+    cursor: default;
+  }
+
+  .tagline-word::before {
+    content: attr(data-cn);
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--font-cjk);
+    font-size: 0.5em;
+    font-style: normal;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    opacity: 0;
+    transition: var(--transition-normal);
+  }
+
+  .tagline-word:hover {
+    color: var(--color-gold-400);
+    text-shadow: var(--glow-gold);
+  }
+
+  .tagline-word:hover::before {
+    opacity: 1;
+    top: 120%;
+  }
+
+  .tagline-separator {
+    width: 6px;
+    height: 6px;
+    background: var(--color-aurora-purple-400);
+    border-radius: var(--radius-full);
+    animation: pulse var(--duration-ambient-fast) var(--ease-in-out) infinite;
+  }
+
+  /* Description */
+  .hero-description {
+    font-size: var(--text-style-prose-size);
+    font-weight: var(--text-style-prose-weight);
+    line-height: var(--text-style-prose-line-height);
+    color: var(--color-text-secondary);
+    max-width: var(--container-md);
+    margin: 0 auto;
+    opacity: 0;
+    animation: fadeInUp var(--duration-slowest) var(--ease-spring) var(--delay-1200) forwards;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .tagline {
+      gap: var(--space-4);
+    }
+
+    .tagline-separator {
+      display: none;
+    }
+  }
+</style>

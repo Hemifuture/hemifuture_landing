@@ -1,0 +1,158 @@
+/**
+ * Hemifuture Design System - Color Tokens
+ * 
+ * Color Philosophy:
+ * - Deep void backgrounds create infinite depth
+ * - Aurora gradients evoke otherworldly magic
+ * - Starlight accents provide ethereal highlights
+ */
+
+:root {
+  /* ========================================
+     BASE COLORS - Core palette
+     ======================================== */
+  
+  /* Void - The deepest darks */
+  --color-void-900: #050508;
+  --color-void-800: #0a0a0f;
+  --color-void-700: #0f0f16;
+  --color-void-600: #12121a;
+  --color-void-500: #16161f;
+  
+  /* Mist - Mid-tone depths */
+  --color-mist-900: #1a1a2e;
+  --color-mist-800: #1e1e35;
+  --color-mist-700: #22223b;
+  --color-mist-600: #272742;
+  --color-mist-500: #2d2d4a;
+  
+  /* Twilight - Deep blues */
+  --color-twilight-900: #0f1629;
+  --color-twilight-800: #16213e;
+  --color-twilight-700: #1a2744;
+  --color-twilight-600: #1f2d4a;
+  --color-twilight-500: #243451;
+
+  /* ========================================
+     AURORA COLORS - Magical gradients
+     ======================================== */
+  
+  /* Aurora Primary - Ethereal violet-blue */
+  --color-aurora-100: #c4d0ff;
+  --color-aurora-200: #a3b4ff;
+  --color-aurora-300: #8298f5;
+  --color-aurora-400: #667eea;
+  --color-aurora-500: #5a6fd6;
+  --color-aurora-600: #4e5fc2;
+  --color-aurora-700: #424fae;
+  
+  /* Aurora Secondary - Deep purple */
+  --color-aurora-purple-100: #d4b8e8;
+  --color-aurora-purple-200: #b892d4;
+  --color-aurora-purple-300: #9b6cc0;
+  --color-aurora-purple-400: #764ba2;
+  --color-aurora-purple-500: #6a4392;
+  --color-aurora-purple-600: #5e3b82;
+  
+  /* Aurora Tertiary - Rose pink */
+  --color-aurora-rose-100: #fbd3f8;
+  --color-aurora-rose-200: #f7b7f3;
+  --color-aurora-rose-300: #f3a3ef;
+  --color-aurora-rose-400: #f093fb;
+  --color-aurora-rose-500: #d680e0;
+  --color-aurora-rose-600: #bc6dc5;
+
+  /* ========================================
+     LIGHT COLORS - Text and highlights
+     ======================================== */
+  
+  /* Starlight - Pure whites */
+  --color-starlight-100: #ffffff;
+  --color-starlight-200: #f8f8ff;
+  --color-starlight-300: #f0f0ff;
+  --color-starlight-400: #e8e8ff;
+  --color-starlight-500: #e0e0f8;
+  
+  /* Moonbeam - Soft whites with opacity */
+  --color-moonbeam-100: rgba(255, 255, 255, 0.95);
+  --color-moonbeam-200: rgba(255, 255, 255, 0.85);
+  --color-moonbeam-300: rgba(255, 255, 255, 0.7);
+  --color-moonbeam-400: rgba(255, 255, 255, 0.5);
+  --color-moonbeam-500: rgba(255, 255, 255, 0.3);
+  
+  /* Whisper - Subtle text colors */
+  --color-whisper-100: rgba(255, 255, 255, 0.6);
+  --color-whisper-200: rgba(255, 255, 255, 0.5);
+  --color-whisper-300: rgba(255, 255, 255, 0.4);
+  --color-whisper-400: rgba(255, 255, 255, 0.3);
+  --color-whisper-500: rgba(255, 255, 255, 0.2);
+
+  /* ========================================
+     ACCENT COLORS - Special highlights
+     ======================================== */
+  
+  /* Gold - Achievement, warmth */
+  --color-gold-400: #ffd700;
+  --color-gold-500: #e6c200;
+  --color-gold-600: #ccab00;
+  --color-gold-glow: rgba(255, 215, 0, 0.7);
+  
+  /* Emerald - Growth, nature */
+  --color-emerald-400: #50c878;
+  --color-emerald-500: #48b870;
+  --color-emerald-glow: rgba(80, 200, 120, 0.5);
+  
+  /* Ruby - Passion, importance */
+  --color-ruby-400: #e0115f;
+  --color-ruby-500: #cc0f56;
+  --color-ruby-glow: rgba(224, 17, 95, 0.5);
+
+  /* ========================================
+     SEMANTIC COLORS - Functional meanings
+     ======================================== */
+  
+  /* Background layers */
+  --color-bg-base: var(--color-void-800);
+  --color-bg-elevated: var(--color-void-600);
+  --color-bg-overlay: var(--color-mist-900);
+  --color-bg-card: rgba(18, 18, 26, 0.6);
+  --color-bg-card-hover: rgba(26, 26, 46, 0.8);
+  
+  /* Text hierarchy */
+  --color-text-primary: var(--color-moonbeam-200);
+  --color-text-secondary: var(--color-whisper-200);
+  --color-text-tertiary: var(--color-whisper-400);
+  --color-text-muted: var(--color-whisper-500);
+  
+  /* Interactive states */
+  --color-interactive-default: var(--color-aurora-400);
+  --color-interactive-hover: var(--color-aurora-300);
+  --color-interactive-active: var(--color-aurora-500);
+  
+  /* Borders */
+  --color-border-subtle: rgba(102, 126, 234, 0.1);
+  --color-border-default: rgba(102, 126, 234, 0.15);
+  --color-border-emphasis: rgba(102, 126, 234, 0.3);
+  --color-border-focus: var(--color-aurora-400);
+
+  /* ========================================
+     GRADIENT PRESETS
+     ======================================== */
+  
+  --gradient-aurora: linear-gradient(135deg, var(--color-aurora-400) 0%, var(--color-aurora-purple-400) 50%, var(--color-aurora-rose-400) 100%);
+  --gradient-aurora-soft: linear-gradient(135deg, var(--color-aurora-400) 0%, var(--color-aurora-purple-400) 100%);
+  --gradient-text: linear-gradient(135deg, var(--color-starlight-400) 0%, var(--color-aurora-400) 50%, var(--color-aurora-rose-400) 100%);
+  --gradient-card: linear-gradient(135deg, rgba(26, 26, 46, 0.8) 0%, rgba(18, 18, 26, 0.9) 100%);
+  --gradient-fade-down: linear-gradient(180deg, var(--color-aurora-400), transparent);
+  --gradient-fade-horizontal: linear-gradient(90deg, transparent, var(--color-aurora-400), transparent);
+
+  /* ========================================
+     GLOW EFFECTS
+     ======================================== */
+  
+  --glow-aurora-sm: 0 0 20px rgba(102, 126, 234, 0.3);
+  --glow-aurora-md: 0 0 40px rgba(102, 126, 234, 0.4);
+  --glow-aurora-lg: 0 0 60px rgba(102, 126, 234, 0.4), 0 0 120px rgba(118, 75, 162, 0.2);
+  --glow-gold: 0 0 30px var(--color-gold-glow);
+  --glow-card-hover: 0 30px 60px rgba(0, 0, 0, 0.3);
+}

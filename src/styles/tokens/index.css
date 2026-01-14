@@ -1,0 +1,11 @@
+/**
+ * Hemifuture Design System - Token Index
+ * 
+ * Import this file to get all design tokens.
+ * Order matters: colors -> typography -> spacing -> animations
+ */
+
+@import './colors.css';
+@import './typography.css';
+@import './spacing.css';
+@import './animations.css';

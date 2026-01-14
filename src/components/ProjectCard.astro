@@ -1,0 +1,144 @@
+---
+/**
+ * ProjectCard.astro
+ * 
+ * Card component for displaying project information.
+ * Refactored to use shared animation classes.
+ */
+
+interface Props {
+  status?: string;
+  name: string;
+  tagline: string;
+  description: string;
+  href?: string;
+}
+
+const { status, name, tagline, description, href } = Astro.props;
+const CardTag = href ? 'a' : 'article';
+const cardProps = href ? { href } : {};
+---
+
+<CardTag class="project-card fade-in-up" {...cardProps}>
+  {status && (
+    <span class="project-status">{status}</span>
+  )}
+  
+  <div class="project-content">
+    <h3 class="project-name">{name}</h3>
+    <p class="project-tagline">{tagline}</p>
+    <p class="project-description">{description}</p>
+  </div>
+
+  {href && (
+    <div class="project-footer">
+      <span class="project-link">
+        Learn More
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </div>
+  )}
+</CardTag>
+
+<style>
+  .project-card {
+    background: var(--color-surface-glass);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--radius-xl);
+    padding: var(--space-10);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition-smooth);
+  }
+
+  a.project-card:hover {
+    border-color: var(--color-aurora-400);
+    box-shadow: var(--glow-card-hover);
+  }
+
+  a.project-card.visible:hover {
+    transform: translateY(-6px);
+  }
+
+  .project-status {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-2) var(--space-4);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+    background: linear-gradient(135deg,
+      var(--color-aurora-400) 0%,
+      var(--color-aurora-purple-400) 100%
+    );
+    color: var(--color-text-on-emphasis);
+    width: fit-content;
+  }
+
+  .project-content {
+    flex: 1;
+  }
+
+  .project-name {
+    font-family: var(--font-display);
+    font-size: var(--text-heading-lg);
+    font-weight: var(--font-weight-regular);
+    margin-bottom: var(--space-2);
+    transition: var(--transition-normal);
+  }
+
+  a.project-card:hover .project-name {
+    color: var(--color-aurora-400);
+  }
+
+  .project-tagline {
+    font-family: var(--font-cjk);
+    font-size: var(--text-body-sm);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+
+  .project-description {
+    font-size: var(--text-body-md);
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .project-footer {
+    border-top: 1px solid var(--color-border-subtle);
+    padding-top: var(--space-4);
+  }
+
+  .project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    transition: var(--transition-normal);
+  }
+
+  a.project-card:hover .project-link {
+    color: var(--color-aurora-400);
+    gap: var(--space-3);
+  }
+
+  .project-link svg {
+    transition: var(--transition-normal);
+  }
+
+  a.project-card:hover .project-link svg {
+    transform: translateX(4px);
+  }
+</style>
